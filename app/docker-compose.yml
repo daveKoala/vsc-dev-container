@@ -10,3 +10,9 @@ services:
     environment:
       - NODE_ENV=production
     command: npm run start
+
+    healthcheck:
+      test: ["CMD-SHELL", "curl --fail http://localhost:3000/pingz || exit 1"]
+      interval: 5s
+      timeout: 10s
+      retries: 5

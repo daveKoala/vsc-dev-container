@@ -24,6 +24,15 @@ process.once('SIGINT', closeGracefully)
 
 process.once('SIGTERM', closeGracefully)
 
+app.use("/pingz", async (req: express.Request, res: express.Response, next: express.NextFunction) => {
+  try {
+    console.log("pingz")
+    res.status(200).send("ok")
+  } catch (error) {
+    next(error)
+  }
+})
+
 app.use("/", async (req: express.Request, res: express.Response, next: express.NextFunction) => {
   try {
     res.status(200).send("ok")

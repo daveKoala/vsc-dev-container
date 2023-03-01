@@ -1,7 +1,8 @@
 FROM node:18-bullseye-slim AS base
 
-# Update the base image
-RUN apt-get update && apt-get upgrade -y
+# Update the base image. 'curl' is installed to run the healthcheck
+RUN apt-get update && apt-get upgrade -y \
+  && apt-get install -y curl
 
 # The directory within the container COPY, RUN, CMD etc commands are executed
 WORKDIR /usr/src/app
