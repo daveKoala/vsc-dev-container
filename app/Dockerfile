@@ -1,11 +1,18 @@
 FROM node:18-bullseye-slim AS base
 
+ARG UID=1000
+ARG GID=1000
+
+ENV WDIR=/usr/src/app
+
 # Update the base image. 'curl' is installed to run the healthcheck
+# Need to change the root user to something else. Not node tho'
 RUN apt-get update && apt-get upgrade -y \
+  # && groupadd -r nodegroup \
   && apt-get install -y curl
 
 # The directory within the container COPY, RUN, CMD etc commands are executed
-WORKDIR /usr/src/app
+WORKDIR ${WDIR}
 
 # Copy any NPM packages files from project into 'container image' WORKDIR location
 COPY package*.json ./
@@ -20,12 +27,12 @@ COPY src ./src
 # Build the project to ./dist
 FROM base AS build
 
-RUN apt-get update && apt-get upgrade -y
+# RUN apt-get update && apt-get upgrade -y
 
-WORKDIR /usr/src/app
+WORKDIR ${WDIR}
 
 # Copy all the files across
-COPY --from=base /usr/src/app ./
+COPY --from=base ${WDIR} ./
 
 #  Build the project 
 RUN npm run build
@@ -33,9 +40,9 @@ RUN npm run build
 # Third step copies only nessessary files and runs
 FROM build as production
 
-WORKDIR /usr/src/app
+WORKDIR ${WDIR}
 
-COPY --from=build /usr/src/app/dist ./
+COPY --from=build ${WDIR}/dist ./
 
 EXPOSE 3000
 

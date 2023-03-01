@@ -1,9 +1,9 @@
 # Start a development container with hot reloading using Nodmon. NODE_ENV is development
 dev:
-	docker compose -f ./app/docker-compose.yml   -f ./app/docker-compose-dev.yml up
+	docker compose -f ./app/docker-compose.yml -f ./app/docker-compose-dev.yml up
 
 build:
-	docker compose -f ./app/docker-compose.yml   -f ./app/docker-compose-dev.yml up --build
+	docker compose -f ./app/docker-compose.yml -f ./app/docker-compose-dev.yml up --build
 
 # Open terminal inside container 
 term:
