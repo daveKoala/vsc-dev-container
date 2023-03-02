@@ -11,4 +11,17 @@ services:
       - NODE_ENV=development
     healthcheck:
       disable: true
+    depends_on:
+      - mongoDB
       
+  mongoDB:
+    image: mongo
+    ports:
+        - '27017:27017'
+    container_name: mongoDB
+    restart: always
+    volumes:
+      - ~/mongo:/data/db
+    environment:
+        - MONGO_INITDB_ROOT_USERNAME=mongoadmin
+        - MONGO_INITDB_ROOT_PASSWORD=password
