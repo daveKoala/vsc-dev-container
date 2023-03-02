@@ -1,0 +1,26 @@
+// https://aka.ms/devcontainer.json
+{
+  "name": "Existing Docker Compose (Extend)",
+  "dockerComposeFile": ["../app/docker-compose.yml", "../app/docker-compose-dev.yml"],
+  "service": "app",
+  "workspaceFolder": "/usr/src/app",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "mikestead.dotenv",
+        "ms-vscode.makefile-tools",
+        "ms-vscode.vscode-typescript-tslint-plugin",
+        "quicktype.quicktype",
+        "Shan.code-settings-sync",
+        "WallabyJs.quokka-vscode",
+        "wix.vscode-import-cost"
+      ],
+      "settings": {}
+    }
+  }
+  // "remoteUser": "sail",
+  // "postCreateCommand": "chown -R 1000:1000 /var/www/html"
+  // "forwardPorts": [],
+  // "runServices": [],
+  // "shutdownAction": "none",
+}

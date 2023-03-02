@@ -15,3 +15,6 @@ prod:
 
 healthLog:
 	docker inspect --format "{{json .State.Health }}" app-app-1
+
+listEx:
+	code --list-extensions > extensions.txt

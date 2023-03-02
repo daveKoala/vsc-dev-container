@@ -1,0 +1,7 @@
+mikestead.dotenv
+ms-vscode.makefile-tools
+ms-vscode.vscode-typescript-tslint-plugin
+quicktype.quicktype
+Shan.code-settings-sync
+WallabyJs.quokka-vscode
+wix.vscode-import-cost

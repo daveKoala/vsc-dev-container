@@ -35,7 +35,7 @@ app.use("/pingz", async (req: express.Request, res: express.Response, next: expr
 
 app.use("/", async (req: express.Request, res: express.Response, next: express.NextFunction) => {
   try {
-    res.status(200).send("ok")
+    res.status(200).send("ok....")
   } catch (error) {
     next(error)
   }
